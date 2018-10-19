@@ -1,15 +1,8 @@
 language: ruby
 
 rvm:
-  - 1.9.3
-  - 2.0
-  - 2.1
-  - 2.2
-  - 2.3
   - 2.4
   - 2.5
-  - jruby-1.7
-  - rbx-2
   - ruby-head
   - jruby-head
 
@@ -21,15 +14,6 @@ env:
     - HANDLER="ox"
     - HANDLER="oga"
 
-matrix:
-  exclude:
-    - env: HANDLER="ox"
-      rvm: jruby-1.7
-    - env: HANDLER="ox"
-      rvm: jruby-head
-  allow_failures:
-    - env: HANDLER="oga"
-      rvm: jruby-1.7
-    - rvm: rbx-2
-    - rvm: ruby-head
-    - rvm: jruby-head
+notifications:
+  webhooks:
+    secure: QFW4WHH8A/ht3EKFbUNc7u03Ca+P6qm7ypIiXU+y8fO8fEps2/f7fTrWIUGkohShFyaaZw1/NjDWUx86LYBFfs4dYduHy8U3BSbWrS4ot4+oO9TsKdatKydTXpbvRqjgPITECmMWDoz4e7gMdZ5fGuBBdO1LQGVRr9mUXl13QU4=
