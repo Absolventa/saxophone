@@ -1,6 +1,4 @@
-# HEAD
-
-* Renaming from `SAXMachine` to `Saxophone`
+# Version history of parent gem "sax-machine":
 
 # 1.3.2
 
