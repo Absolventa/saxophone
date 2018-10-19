@@ -2,7 +2,7 @@
 require File.expand_path("../lib/saxophone/version", __FILE__)
 
 Gem::Specification.new do |s|
-  s.name      = "sax-machine"
+  s.name      = "saxophone"
   s.version   = Saxophone::VERSION
 
   s.authors   = ["Paul Dix", "Julien Kirch", "Ezekiel Templin", "Dmitry Krasnoukhov", "Robin Neumann"]
