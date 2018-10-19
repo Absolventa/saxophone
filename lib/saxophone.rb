@@ -1,16 +1,16 @@
-require "sax-machine/version"
-require "sax-machine/sax_document"
-require "sax-machine/sax_configure"
-require "sax-machine/sax_config"
+require "saxophone/version"
+require "saxophone/sax_document"
+require "saxophone/sax_configure"
+require "saxophone/sax_config"
 
-module SAXMachine
+module Saxophone
   def self.handler
     @@handler ||= nil
   end
 
   def self.handler=(handler)
     if handler
-      require "sax-machine/handlers/sax_#{handler}_handler"
+      require "saxophone/handlers/sax_#{handler}_handler"
       @@handler = handler
     end
   end
@@ -19,13 +19,13 @@ end
 # Try handlers
 [:ox, :oga].each do |handler|
   begin
-    SAXMachine.handler = handler
+    Saxophone.handler = handler
     break
   rescue LoadError
   end
 end
 
 # Still no handler, use Nokogiri
-if SAXMachine.handler.nil?
-  SAXMachine.handler = :nokogiri
+if Saxophone.handler.nil?
+  Saxophone.handler = :nokogiri
 end
