@@ -1,8 +1,14 @@
 # Saxophone
 
-This repository is a fork of [pauldix/sax-machine](https://github.com/pauldix/sax-machine).
-
 A declarative SAX parsing library backed by Nokogiri, Ox or Oga.
+
+## Origins
+
+This repository is a fork of [pauldix/sax-machine](https://github.com/pauldix/sax-machine). We'd like to
+thank all original authors and contributers for their work on the original repository. However, we have
+the feeling that the original repository is not being actively maintained anymore - that's why we decided to
+fork it and continue the work of the original authors in our façon. To make the distinction clear, we
+renamed the project from that point to `Saxophone`.
 
 ## Installation
 
