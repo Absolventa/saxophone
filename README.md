@@ -1,4 +1,4 @@
-# Saxophone
+# 🎷Saxophone
 
 A declarative SAX parsing library backed by Nokogiri, Ox or Oga.
 
@@ -66,34 +66,42 @@ end
 class AtomEntry
   include Saxophone
   element :title
+
   # The :as argument makes this available through entry.author instead of .name
   element :name, as: :author
   element "feedburner:origLink", as: :url
+
   # The :default argument specifies default value for element when it's missing
   element :summary, class: String, default: "No summary available"
+
   element :content, class: AtomContent
   element :published
+
   ancestor :ancestor
 end
 
 class Atom
   include Saxophone
+
   # Use block to modify the returned value
   # Blocks are working with pretty much everything,
   # except for `elements` with `class` attribute
   element :title do |title|
     title.strip
   end
+
   # The :with argument means that you only match a link tag
   # that has an attribute of type: "text/html"
   element :link, value: :href, as: :url, with: {
     type: "text/html"
   }
+
   # The :value argument means that instead of setting the value
   # to the text between the tag, it sets it to the attribute value of :href
   element :link, value: :href, as: :feed_url, with: {
     type: "application/atom+xml"
   }
+
   elements :entry, as: :entries, class: AtomEntry
 end
 ```
@@ -101,7 +109,7 @@ end
 Then parse any XML with your class:
 
 ```ruby
-feed = Atom.parse(xml_text)
+feed = Atom.parse(xml)
 
 feed.title # Whatever the title of the blog is
 feed.url # The main URL of the blog
@@ -151,11 +159,11 @@ Multiple elements can be mapped to the same alias:
 ```ruby
 class RSSEntry
   include Saxophone
-  # ...
-  element :pubDate, as: :published
-  element :pubdate, as: :published
-  element :"dc:date", as: :published
-  element :"dc:Date", as: :published
+
+  element :pubDate,           as: :published
+  element :pubdate,           as: :published
+  element :"dc:date",         as: :published
+  element :"dc:Date",         as: :published
   element :"dcterms:created", as: :published
 end
 ```
