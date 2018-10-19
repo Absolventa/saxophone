@@ -125,15 +125,11 @@ module Saxophone
     end
 
     def _error(string)
-      if @on_error
-        @on_error.call(string)
-      end
+      @on_error.call(string)
     end
 
     def _warning(string)
-      if @on_warning
-        @on_warning.call(string)
-      end
+      @on_warning.call(string)
     end
 
     private
