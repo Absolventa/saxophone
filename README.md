@@ -37,13 +37,13 @@ gem 'nokogiri', '~> 1.6'
 To use **Ox** add this line to your Gemfile:
 
 ```ruby
-gem 'ox', '>= 2.1.2'
+gem 'ox', '>= 2.10.0'
 ```
 
 To use **Oga** add this line to your Gemfile:
 
 ```ruby
-gem 'oga', '>= 0.2.0'
+gem 'oga', '>= 2.15'
 ```
 
 You can also specify which handler to use manually, like this:

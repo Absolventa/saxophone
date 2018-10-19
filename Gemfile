@@ -10,8 +10,8 @@ group :development, :test do
 
   gem 'activerecord', '~> 5.0.0'
   gem 'nokogiri', '>= 1.8.2'
-  gem 'ox', '>= 2.1.2', platforms: [:mri, :rbx]
-  gem 'oga', '>= 0.3.4'
+  gem 'ox', '>= 2.10.0'
+  gem 'oga', '>= 2.15'
 end
 
 group :test do
