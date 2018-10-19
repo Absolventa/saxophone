@@ -1,7 +1,7 @@
-require 'sax-machine/handlers/sax_abstract_handler'
+require 'saxophone/handlers/sax_abstract_handler'
 require 'oga'
 
-module SAXMachine
+module Saxophone
   class SAXOgaHandler
     include SAXAbstractHandler
 

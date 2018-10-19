@@ -1,5 +1,7 @@
 # HEAD
 
+* Renaming from `SAXMachine` to `Saxophone`
+
 # 1.3.2
 
 * Compatibility with Oga 0.3

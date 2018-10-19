@@ -1,7 +1,7 @@
-module SAXMachine
+module Saxophone
   def self.configure(clazz)
     extended_clazz = Class.new(clazz)
-    extended_clazz.send(:include, SAXMachine)
+    extended_clazz.send(:include, Saxophone)
 
     # override create_attr to create attributes on the original class
     def extended_clazz.create_attr real_name

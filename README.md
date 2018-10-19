@@ -1,14 +1,6 @@
-# SAX Machine
+# Saxophone
 
-## Status
-
-[![Gem Version](https://badge.fury.io/rb/sax-machine.svg)](http://badge.fury.io/rb/sax-machine)
-[![Build Status](https://secure.travis-ci.org/pauldix/sax-machine.svg?branch=master)](http://travis-ci.org/pauldix/sax-machine?branch=master)
-[![Coverage Status](https://img.shields.io/coveralls/pauldix/sax-machine.svg)](https://coveralls.io/r/pauldix/sax-machine?branch=master)
-[![Code Climate](https://img.shields.io/codeclimate/github/pauldix/sax-machine.svg)](https://codeclimate.com/github/pauldix/sax-machine)
-[![Dependencies](https://gemnasium.com/pauldix/sax-machine.svg)](https://gemnasium.com/pauldix/sax-machine)
-
-## Description
+This repository is a fork of [pauldix/sax-machine](https://github.com/pauldix/sax-machine).
 
 A declarative SAX parsing library backed by Nokogiri, Ox or Oga.
 
@@ -17,7 +9,7 @@ A declarative SAX parsing library backed by Nokogiri, Ox or Oga.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'sax-machine'
+gem 'saxophone'
 ```
 
 And then execute:
@@ -28,7 +20,7 @@ $ bundle
 
 ## Usage
 
-SAX Machine can use either `nokogiri`, `ox` or `oga` as XML SAX handler.
+Saxophone can use either `nokogiri`, `ox` or `oga` as XML SAX handler.
 
 To use **Nokogiri** add this line to your Gemfile:
 
@@ -51,22 +43,22 @@ gem 'oga', '>= 0.2.0'
 You can also specify which handler to use manually, like this:
 
 ```ruby
-SAXMachine.handler = :nokogiri
+Saxophone.handler = :nokogiri
 ```
 
 ## Examples
 
-Include `SAXMachine` in any class and define properties to parse:
+Include `Saxophone` in any class and define properties to parse:
 
 ```ruby
 class AtomContent
-  include SAXMachine
+  include Saxophone
   attribute :type
   value :text
 end
 
 class AtomEntry
-  include SAXMachine
+  include Saxophone
   element :title
   # The :as argument makes this available through entry.author instead of .name
   element :name, as: :author
@@ -79,7 +71,7 @@ class AtomEntry
 end
 
 class Atom
-  include SAXMachine
+  include Saxophone
   # Use block to modify the returned value
   # Blocks are working with pretty much everything,
   # except for `elements` with `class` attribute
@@ -122,7 +114,7 @@ You can also use the elements method without specifying a class:
 
 ```ruby
 class ServiceResponse
-  include SAXMachine
+  include Saxophone
   elements :message, as: :messages
 end
 
@@ -137,12 +129,12 @@ response.messages.last  # world
 ```
 
 To limit conflicts in the class used for mappping, you can use the alternate
-`SAXMachine.configure` syntax:
+`Saxophone.configure` syntax:
 
 ```ruby
 class X < ActiveRecord::Base
   # This way no element, elements or ancestor method will be added to X
-  SAXMachine.configure(X) do |c|
+  Saxophone.configure(X) do |c|
     c.element :title
   end
 end
@@ -152,7 +144,7 @@ Multiple elements can be mapped to the same alias:
 
 ```ruby
 class RSSEntry
-  include SAXMachine
+  include Saxophone
   # ...
   element :pubDate, as: :published
   element :pubdate, as: :published
@@ -180,12 +172,13 @@ If an element is defined in the source but is blank (e.g., `<pubDate></pubDate>`
 
 The MIT License
 
-Copyright (c) 2009-2014:
+Copyright (c) 2009-2018:
 
 * [Paul Dix](http://www.pauldix.net)
 * [Julien Kirch](http://www.archiloque.net)
 * [Ezekiel Templin](http://zeke.templ.in)
 * [Dmitry Krasnoukhov](http://krasnoukhov.com)
+* [Robin Neumann](https://github.com/neumanrq)
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

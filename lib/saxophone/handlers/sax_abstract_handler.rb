@@ -1,6 +1,6 @@
 require 'time'
 
-module SAXMachine
+module Saxophone
   module SAXAbstractHandler
     NO_BUFFER = :no_buffer
 
