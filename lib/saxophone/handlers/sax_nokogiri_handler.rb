@@ -1,7 +1,7 @@
-require 'sax-machine/handlers/sax_abstract_handler'
+require 'saxophone/handlers/sax_abstract_handler'
 require 'nokogiri'
 
-module SAXMachine
+module Saxophone
   class SAXNokogiriHandler < Nokogiri::XML::SAX::Document
     include SAXAbstractHandler
 

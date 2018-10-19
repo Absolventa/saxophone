@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 require 'active_record'
 
-describe "SAXMachine ActiveRecord integration" do
+describe "Saxophone ActiveRecord integration" do
   before(:all) do
     ActiveRecord::Base.establish_connection(
       adapter: 'sqlite3',
@@ -16,7 +16,7 @@ describe "SAXMachine ActiveRecord integration" do
     end
 
     class MySaxModel < ActiveRecord::Base
-      SAXMachine.configure(MySaxModel) do |c|
+      Saxophone.configure(MySaxModel) do |c|
         c.element :title
       end
     end

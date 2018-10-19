@@ -1,4 +1,4 @@
-module SAXMachine
+module Saxophone
   class SAXConfig
     class AttributeConfig < ElementValueConfig
       def value_from_attrs(attrs)

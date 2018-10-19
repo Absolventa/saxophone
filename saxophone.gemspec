@@ -1,13 +1,12 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path("../lib/sax-machine/version", __FILE__)
+require File.expand_path("../lib/saxophone/version", __FILE__)
 
 Gem::Specification.new do |s|
   s.name      = "sax-machine"
-  s.version   = SAXMachine::VERSION
+  s.version   = Saxophone::VERSION
 
-  s.authors   = ["Paul Dix", "Julien Kirch", "Ezekiel Templin", "Dmitry Krasnoukhov"]
-  s.email     = %q{paul@pauldix.net}
-  s.homepage  = %q{http://github.com/pauldix/sax-machine}
+  s.authors   = ["Paul Dix", "Julien Kirch", "Ezekiel Templin", "Dmitry Krasnoukhov", "Robin Neumann"]
+  s.homepage  = %q{http://github.com/Absolventa/saxophone}
   s.summary   = %q{Declarative SAX Parsing with Nokogiri, Ox or Oga}
   s.license   = %q{MIT}
 

@@ -1,11 +1,11 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe "SAXMachine" do
+describe "Saxophone" do
   describe "element" do
     describe "when parsing a single element" do
       before do
         @klass = Class.new do
-          include SAXMachine
+          include Saxophone
           element :title
           ancestor :body
           value :something, required: false
@@ -30,7 +30,7 @@ describe "SAXMachine" do
             "#{@title} ***"
           end
 
-          include SAXMachine
+          include Saxophone
           element :title
         end
 
@@ -45,7 +45,7 @@ describe "SAXMachine" do
             @title = "#{val} **"
           end
 
-          include SAXMachine
+          include Saxophone
           element :title
         end
 
@@ -131,7 +131,7 @@ describe "SAXMachine" do
       describe "the class attribute" do
         before(:each) do
           @klass = Class.new do
-            include SAXMachine
+            include Saxophone
             element :date, class: DateTime
           end
 
@@ -146,17 +146,17 @@ describe "SAXMachine" do
         describe "string" do
           before do
             class TestString
-              include SAXMachine
+              include Saxophone
               element :number, class: String
             end
 
             class TestStringAttribute
-              include SAXMachine
+              include Saxophone
               attribute :sub_number, class: String
             end
 
             class TestStringWithAttribute
-              include SAXMachine
+              include Saxophone
               element :number, class: TestStringAttribute
             end
           end
@@ -175,22 +175,22 @@ describe "SAXMachine" do
         describe "integer" do
           before do
             class TestInteger
-              include SAXMachine
+              include Saxophone
               element :number, class: Integer
             end
 
             class TestIntegerAttribute
-              include SAXMachine
+              include Saxophone
               attribute :sub_number, class: Integer
             end
 
             class TestIntegerWithAttribute
-              include SAXMachine
+              include Saxophone
               element :number, class: TestIntegerAttribute
             end
 
             class IntegerInsideAttribute
-              include SAXMachine
+              include Saxophone
               element :number, value: :int_attr, as: :int_attr, class: Integer
             end
           end
@@ -214,17 +214,17 @@ describe "SAXMachine" do
         describe "float" do
           before do
             class TestFloat
-              include SAXMachine
+              include Saxophone
               element :number, class: Float
             end
 
             class TestFloatAttribute
-              include SAXMachine
+              include Saxophone
               attribute :sub_number, class: Float
             end
 
             class TestFloatWithAttribute
-              include SAXMachine
+              include Saxophone
               element :number, class: TestFloatAttribute
             end
           end
@@ -248,17 +248,17 @@ describe "SAXMachine" do
         describe "symbol" do
           before do
             class TestSymbol
-              include SAXMachine
+              include Saxophone
               element :symbol, class: Symbol
             end
 
             class TestSymbolAttribute
-              include SAXMachine
+              include Saxophone
               attribute :sub_symbol, class: Symbol
             end
 
             class TestSymbolWithAttribute
-              include SAXMachine
+              include Saxophone
               element :symbol, class: TestSymbolAttribute
             end
           end
@@ -277,17 +277,17 @@ describe "SAXMachine" do
         describe "time" do
           before do
             class TestTime
-              include SAXMachine
+              include Saxophone
               element :time, class: Time
             end
 
             class TestTimeAttribute
-              include SAXMachine
+              include Saxophone
               attribute :sub_time, class: Time
             end
 
             class TestTimeWithAttribute
-              include SAXMachine
+              include Saxophone
               element :time, class: TestTimeAttribute
             end
           end
@@ -307,7 +307,7 @@ describe "SAXMachine" do
       describe "the default attribute" do
         it "is available" do
           @klass = Class.new do
-            include SAXMachine
+            include Saxophone
             element :number, class: Integer, default: 0
           end
 
@@ -320,7 +320,7 @@ describe "SAXMachine" do
 
         it "can be a Boolean" do
           @klass = Class.new do
-            include SAXMachine
+            include Saxophone
             element(:bool, default: false) { |v| !!v }
           end
 
@@ -338,7 +338,7 @@ describe "SAXMachine" do
       describe "the required attribute" do
         it "is available" do
           @klass = Class.new do
-            include SAXMachine
+            include Saxophone
             element :date, required: true
           end
           expect(@klass.required?(:date)).to be_truthy
@@ -348,7 +348,7 @@ describe "SAXMachine" do
       describe "the block" do
         before do
           class ElementBlockParser
-            include SAXMachine
+            include Saxophone
 
             ancestor :parent do |parent|
               parent.class.to_s
@@ -360,7 +360,7 @@ describe "SAXMachine" do
           end
 
           class BlockParser
-            include SAXMachine
+            include Saxophone
 
             element :title do |title|
               "#{title}!!!"
@@ -416,7 +416,7 @@ describe "SAXMachine" do
     describe "when parsing multiple elements" do
       before do
         @klass = Class.new do
-          include SAXMachine
+          include Saxophone
           element :title
           element :name
         end
@@ -434,7 +434,7 @@ describe "SAXMachine" do
             []
           end
 
-          include SAXMachine
+          include Saxophone
           elements :items
         end
 
@@ -449,7 +449,7 @@ describe "SAXMachine" do
             @items = [1, *val]
           end
 
-          include SAXMachine
+          include Saxophone
           elements :items
         end
 
@@ -463,7 +463,7 @@ describe "SAXMachine" do
       describe "using the 'as' option" do
         before do
           @klass = Class.new do
-            include SAXMachine
+            include Saxophone
             element :description, as: :summary
           end
         end
@@ -484,7 +484,7 @@ describe "SAXMachine" do
         describe "and the :value option" do
           before do
             @klass = Class.new do
-              include SAXMachine
+              include Saxophone
               element :link, value: :href, with: { foo: "bar" }
             end
           end
@@ -502,7 +502,7 @@ describe "SAXMachine" do
           describe "and the :as option" do
             before do
               @klass = Class.new do
-                include SAXMachine
+                include Saxophone
                 element :link, value: :href, as: :url, with: { foo: "bar" }
                 element :link, value: :href, as: :second_url, with: { asdf: "jkl" }
               end
@@ -519,7 +519,7 @@ describe "SAXMachine" do
         describe "with only one element" do
           before do
             @klass = Class.new do
-              include SAXMachine
+              include Saxophone
               element :link, with: { foo: "bar" }
             end
           end
@@ -548,7 +548,7 @@ describe "SAXMachine" do
         describe "with multiple elements of same tag" do
           before do
             @klass = Class.new do
-              include SAXMachine
+              include Saxophone
               element :link, as: :first, with: { foo: "bar" }
               element :link, as: :second, with: { asdf: "jkl" }
             end
@@ -568,7 +568,7 @@ describe "SAXMachine" do
         describe "with only one element as a regular expression" do
           before do
             @klass = Class.new do
-              include SAXMachine
+              include Saxophone
               element :link, with: { foo: /ar$/ }
             end
           end
@@ -598,7 +598,7 @@ describe "SAXMachine" do
       describe "using the 'value' option" do
         before do
           @klass = Class.new do
-            include SAXMachine
+            include Saxophone
             element :link, value: :foo
           end
         end
@@ -620,7 +620,7 @@ describe "SAXMachine" do
 
         it "saves two different attribute values on a single tag" do
           @klass = Class.new do
-            include SAXMachine
+            include Saxophone
             element :link, value: :foo, as: :first
             element :link, value: :bar, as: :second
           end
@@ -632,7 +632,7 @@ describe "SAXMachine" do
 
         it "does not fail if one of the attribute hasn't been defined" do
           @klass = Class.new do
-            include SAXMachine
+            include Saxophone
             element :link, value: :foo, as: :first
             element :link, value: :bar, as: :second
           end
@@ -646,7 +646,7 @@ describe "SAXMachine" do
       describe "when desiring both the content and attributes of an element" do
         before do
           @klass = Class.new do
-            include SAXMachine
+            include Saxophone
             element :link
             element :link, value: :foo, as: :link_foo
             element :link, value: :bar, as: :link_bar
@@ -667,7 +667,7 @@ describe "SAXMachine" do
     describe "when parsing multiple elements" do
       before do
         @klass = Class.new do
-          include SAXMachine
+          include Saxophone
           elements :entry, as: :entries
         end
       end
@@ -690,7 +690,7 @@ describe "SAXMachine" do
 
       it "parses multiple elements when taking an attribute value" do
         attribute_klass = Class.new do
-          include SAXMachine
+          include Saxophone
           elements :entry, as: :entries, value: :foo
         end
 
@@ -702,21 +702,21 @@ describe "SAXMachine" do
     describe "when using the with and class options" do
       before do
         class Bar
-          include SAXMachine
+          include Saxophone
           element :title
         end
 
         class Foo
-          include SAXMachine
+          include Saxophone
           element :title
         end
 
         class Item
-          include SAXMachine
+          include Saxophone
         end
 
         @klass = Class.new do
-          include SAXMachine
+          include Saxophone
           elements :item, as: :items, with: { type: "Bar" }, class: Bar
           elements :item, as: :items, with: { type: /Foo/ }, class: Foo
         end
@@ -735,12 +735,12 @@ describe "SAXMachine" do
     describe "when using the class option" do
       before do
         class Foo
-          include SAXMachine
+          include Saxophone
           element :title
         end
 
         @klass = Class.new do
-          include SAXMachine
+          include Saxophone
           elements :entry, as: :entries, class: Foo
         end
       end
@@ -766,7 +766,7 @@ describe "SAXMachine" do
 
       it "parses elements, and make attributes and inner text available" do
         class Related
-          include SAXMachine
+          include Saxophone
           element "related", as: :item
           element "related", as: :attr, value: "attr"
         end
@@ -798,7 +798,7 @@ describe "SAXMachine" do
   describe "when dealing with element names containing dashes" do
     it "converts dashes to underscores" do
       class Dashes
-        include SAXMachine
+        include Saxophone
         element :dashed_element
       end
 
@@ -812,7 +812,7 @@ describe "SAXMachine" do
       @xml = File.read("spec/fixtures/atom.xml")
 
       class AtomEntry
-        include SAXMachine
+        include Saxophone
         element :title
         element :name, as: :author
         element "feedburner:origLink", as: :url
@@ -823,7 +823,7 @@ describe "SAXMachine" do
       end
 
       class Atom
-        include SAXMachine
+        include Saxophone
         element :title
         element :link, value: :href, as: :url, with: { type: "text/html" }
         element :link, value: :href, as: :feed_url, with: { type: "application/atom+xml" }
@@ -865,7 +865,7 @@ describe "SAXMachine" do
       class CategoryCollection; end
 
       class Category
-        include SAXMachine
+        include Saxophone
         attr_accessor :id
         element :category, value: :id, as: :id
         element :title
@@ -874,7 +874,7 @@ describe "SAXMachine" do
       end
 
       class CategoryCollection
-        include SAXMachine
+        include Saxophone
         elements :category, as: :categories, class: Category
       end
 
@@ -909,7 +909,7 @@ describe "SAXMachine" do
       ]
 
       class CategoryTree
-        include SAXMachine
+        include Saxophone
         attr_accessor :id
         element :category, value: :id, as: :id
         element :title
@@ -941,7 +941,7 @@ describe "SAXMachine" do
       ]
 
       @klass = Class.new do
-        include SAXMachine
+        include Saxophone
         attr_accessor :id
         element :item, value: "id", as: :id
         element :title
@@ -968,13 +968,13 @@ describe "SAXMachine" do
       ]
 
       class AuthorElement
-        include SAXMachine
+        include Saxophone
         attribute :name
         attribute :role
       end
 
       class ItemElement
-        include SAXMachine
+        include Saxophone
         element :author, class: AuthorElement
       end
 
@@ -1004,13 +1004,13 @@ describe "SAXMachine" do
       ]
 
       class AuthorElement2
-        include SAXMachine
+        include Saxophone
         attribute :name
         attribute :role
       end
 
       class ItemElement2
-        include SAXMachine
+        include Saxophone
         elements :author, as: :authors, class: AuthorElement2
       end
 
@@ -1042,13 +1042,13 @@ describe "SAXMachine" do
       ]
 
       class AuthorElement3
-        include SAXMachine
+        include Saxophone
         value :name
         attribute :role
       end
 
       class ItemElement3
-        include SAXMachine
+        include Saxophone
         element :author, class: AuthorElement3
       end
 
@@ -1079,13 +1079,13 @@ describe "SAXMachine" do
       ]
 
       class AuthorElement4
-        include SAXMachine
+        include Saxophone
         value :name
         attribute :role
       end
 
       class ItemElement4
-        include SAXMachine
+        include Saxophone
         element :title
         elements :author, as: :authors, class: AuthorElement4
 
@@ -1122,7 +1122,7 @@ describe "SAXMachine" do
 
     before do
       class ItemElement5
-        include SAXMachine
+        include Saxophone
         element :pubDate, as: :published
         element :"dc:date", as: :published
       end
@@ -1177,7 +1177,7 @@ describe "SAXMachine" do
       ]
 
       class ItemElement5
-        include SAXMachine
+        include Saxophone
         element :title
       end
 
@@ -1204,7 +1204,7 @@ describe "SAXMachine" do
       @io = StringIO.new('<item id="1"><title>sweet</title></item>')
 
       class IoParser
-        include SAXMachine
+        include Saxophone
         element :title
       end
 

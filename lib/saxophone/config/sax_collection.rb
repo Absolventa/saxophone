@@ -1,4 +1,4 @@
-module SAXMachine
+module Saxophone
   class SAXConfig
     class CollectionConfig
       attr_reader :name

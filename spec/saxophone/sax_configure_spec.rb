@@ -1,21 +1,21 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe "SAXMachine configure" do
+describe "Saxophone configure" do
   before do
     class A
-      SAXMachine.configure(A) do |c|
+      Saxophone.configure(A) do |c|
         c.element :title
       end
     end
 
     class B < A
-      SAXMachine.configure(B) do |c|
+      Saxophone.configure(B) do |c|
         c.element :b
       end
     end
 
     class C < B
-      SAXMachine.configure(C) do |c|
+      Saxophone.configure(C) do |c|
         c.element :c
       end
     end
@@ -34,17 +34,17 @@ describe "SAXMachine configure" do
 
   it { expect(@a).to be_a(A) }
   it { expect(@a).not_to be_a(B) }
-  it { expect(@a).to be_a(SAXMachine) }
+  it { expect(@a).to be_a(Saxophone) }
   it { expect(@a.title).to eq("Test") }
   it { expect(@b).to be_a(A) }
   it { expect(@b).to be_a(B) }
-  it { expect(@b).to be_a(SAXMachine) }
+  it { expect(@b).to be_a(Saxophone) }
   it { expect(@b.title).to eq("Test") }
   it { expect(@b.b).to eq("Matched!") }
   it { expect(@c).to be_a(A) }
   it { expect(@c).to be_a(B) }
   it { expect(@c).to be_a(C) }
-  it { expect(@c).to be_a(SAXMachine) }
+  it { expect(@c).to be_a(Saxophone) }
   it { expect(@c.title).to eq("Test") }
   it { expect(@c.b).to eq("Matched!") }
   it { expect(@c.c).to eq("And Again") }

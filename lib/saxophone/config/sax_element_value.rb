@@ -1,4 +1,4 @@
-module SAXMachine
+module Saxophone
   class SAXConfig
     class ElementValueConfig
       attr_reader :name, :setter, :data_class

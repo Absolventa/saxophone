@@ -1,7 +1,7 @@
-require 'sax-machine/handlers/sax_abstract_handler'
+require 'saxophone/handlers/sax_abstract_handler'
 require 'ox'
 
-module SAXMachine
+module Saxophone
   class SAXOxHandler < Ox::Sax
     include SAXAbstractHandler
 

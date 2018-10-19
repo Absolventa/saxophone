@@ -1,9 +1,9 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe "SAXMachine inheritance" do
+describe "Saxophone inheritance" do
   before do
     class A
-      include SAXMachine
+      include Saxophone
       element :title
     end
 
@@ -32,17 +32,17 @@ describe "SAXMachine inheritance" do
 
   it { expect(@a).to be_a(A) }
   it { expect(@a).not_to be_a(B) }
-  it { expect(@a).to be_a(SAXMachine) }
+  it { expect(@a).to be_a(Saxophone) }
   it { expect(@a.title).to eq("Test") }
   it { expect(@b).to be_a(A) }
   it { expect(@b).to be_a(B) }
-  it { expect(@b).to be_a(SAXMachine) }
+  it { expect(@b).to be_a(Saxophone) }
   it { expect(@b.title).to eq("Test") }
   it { expect(@b.b).to eq("Matched!") }
   it { expect(@c).to be_a(A) }
   it { expect(@c).to be_a(B) }
   it { expect(@c).to be_a(C) }
-  it { expect(@c).to be_a(SAXMachine) }
+  it { expect(@c).to be_a(Saxophone) }
   it { expect(@c.title).to eq("Test") }
   it { expect(@c.b).to eq("Matched!") }
   it { expect(@c.c).to eq("And Again") }

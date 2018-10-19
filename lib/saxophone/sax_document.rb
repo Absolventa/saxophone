@@ -1,11 +1,11 @@
-module SAXMachine
+module Saxophone
   def self.included(base)
     base.send(:include, InstanceMethods)
     base.extend(ClassMethods)
   end
 
   def parse(xml_input, on_error = nil, on_warning = nil)
-    handler_klass = SAXMachine.const_get("SAX#{SAXMachine.handler.capitalize}Handler")
+    handler_klass = Saxophone.const_get("SAX#{Saxophone.handler.capitalize}Handler")
 
     handler = handler_klass.new(self, on_error, on_warning)
     handler.sax_parse(xml_input)
