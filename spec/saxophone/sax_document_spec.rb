@@ -1172,8 +1172,9 @@ describe "Saxophone" do
   describe "with error handling" do
     before do
       @xml = %[
-        <item id="1">
+        <item:a:b id="1">
           <title>sweet</title>
+        </idem>
       ]
 
       class ItemElement5
@@ -1190,9 +1191,7 @@ describe "Saxophone" do
       )
     end
 
-    it "has error" do
-      expect(@errors.uniq.size).to eq(1)
-    end
+    it { expect(@errors.uniq.size).to be >= 1 }
 
     it "has no warning" do
       expect(@warnings.uniq.size).to eq(0)
