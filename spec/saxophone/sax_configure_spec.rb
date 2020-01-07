@@ -4,7 +4,7 @@ describe "Saxophone configure" do
   before do
     class A
       Saxophone.configure(A) do |c|
-        c.element :title
+        c.element :title_new
       end
     end
 
@@ -20,7 +20,7 @@ describe "Saxophone configure" do
       end
     end
 
-    xml = "<top><title>Test</title><b>Matched!</b><c>And Again</c></top>"
+    xml = "<top><title-new>Test</title-new><b>Matched!</b><c>And Again</c></top>"
     @a = A.parse xml
     @b = B.parse xml
     @c = C.parse xml
@@ -35,17 +35,17 @@ describe "Saxophone configure" do
   it { expect(@a).to be_a(A) }
   it { expect(@a).not_to be_a(B) }
   it { expect(@a).to be_a(Saxophone) }
-  it { expect(@a.title).to eq("Test") }
+  it { expect(@a.title_new).to eq("Test") }
   it { expect(@b).to be_a(A) }
   it { expect(@b).to be_a(B) }
   it { expect(@b).to be_a(Saxophone) }
-  it { expect(@b.title).to eq("Test") }
+  it { expect(@b.title_new).to eq("Test") }
   it { expect(@b.b).to eq("Matched!") }
   it { expect(@c).to be_a(A) }
   it { expect(@c).to be_a(B) }
   it { expect(@c).to be_a(C) }
   it { expect(@c).to be_a(Saxophone) }
-  it { expect(@c.title).to eq("Test") }
+  it { expect(@c.title_new).to eq("Test") }
   it { expect(@c.b).to eq("Matched!") }
   it { expect(@c.c).to eq("And Again") }
 end
