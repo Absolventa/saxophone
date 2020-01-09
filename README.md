@@ -188,7 +188,7 @@ If an element is defined in the source but is blank (e.g., `<pubDate></pubDate>`
 
 The MIT License
 
-Copyright (c) 2009-2018:
+Copyright (c) 2009-2020:
 
 * [Paul Dix](http://www.pauldix.net)
 * [Julien Kirch](http://www.archiloque.net)
