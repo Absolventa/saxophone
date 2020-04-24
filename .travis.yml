@@ -7,8 +7,6 @@ rvm:
   - 2.5.2
   - 2.5.3
 
-sudo: false
-
 env:
   matrix:
     - HANDLER="nokogiri"
