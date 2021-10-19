@@ -4,7 +4,7 @@ module Saxophone
     base.extend(ClassMethods)
   end
 
-  def parse(xml_input, on_error = ->(_){}, on_warning = ->(_){})
+  def parse(xml_input, on_error = Saxophone.on_error, on_warning = Saxophone.on_warning)
     handler_klass = Saxophone.const_get("SAX#{Saxophone.handler.capitalize}Handler")
 
     handler = handler_klass.new(self, on_error, on_warning)

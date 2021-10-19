@@ -14,6 +14,22 @@ module Saxophone
       @@handler = handler
     end
   end
+
+  def self.on_error
+    @@on_error ||= ->(_) {}
+  end
+
+  def self.on_error=(on_error_proc)
+    @@on_error = on_error_proc
+  end
+
+  def self.on_warning
+    @@on_warning ||= ->(_) {}
+  end
+
+  def self.on_warning=(on_warning_proc)
+    @@on_warning = on_warning_proc
+  end
 end
 
 # Try handlers
