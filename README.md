@@ -1,6 +1,6 @@
 # 🎷Saxophone
 
-[![Build Status](https://travis-ci.org/Absolventa/saxophone.svg?branch=master)](https://travis-ci.org/Absolventa/saxophone)
+[![Build Status](https://github.com/Absolventa/saxophone/actions/workflows/build.yml/badge.svg)](https://github.com/Absolventa/saxophone/actions/workflows/build.yml)
 
 A declarative SAX parsing library backed by Nokogiri, Ox or Oga.
 
