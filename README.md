@@ -1,8 +1,14 @@
-# 🎷Saxophone
-
-[![Build Status](https://github.com/Absolventa/saxophone/actions/workflows/build.yml/badge.svg)](https://github.com/Absolventa/saxophone/actions/workflows/build.yml)
-
-A declarative SAX parsing library backed by Nokogiri, Ox or Oga.
+<div align="center">
+  <img alt="Saxophone" src="logo.svg" width="400px">
+  <br>
+  <br>
+  <strong>A declarative SAX parsing library backed by Nokogiri, Ox or Oga.</strong>
+  <br>
+  <br>
+  <a href="https://github.com/Absolventa/saxophone/actions/workflows/build.yml">
+    <img src="https://github.com/Absolventa/saxophone/actions/workflows/build.yml/badge.svg" alt="Build Status" style="max-width: 100%;">
+  </a>
+</div>
 
 ## Origins
 
