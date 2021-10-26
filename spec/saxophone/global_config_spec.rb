@@ -16,12 +16,6 @@ describe "Saxophone global configurations" do
       Saxophone.handler = :ox # restore default settings
     end
 
-    context "with handler not set" do
-      it "uses ox as handler" do
-        expect(Saxophone.handler).to eq :ox
-      end
-    end
-
     context "with handler set to ox" do
       before do
         Saxophone.handler = :ox
