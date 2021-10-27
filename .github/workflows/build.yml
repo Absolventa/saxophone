@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby: ['2.5', '2.6', '2.7']
+        ruby: ['2.5', '2.6', '2.7', '3.0']
         handler: ['nokogiri', 'ox', 'oga']
     steps:
     - uses: actions/checkout@v2

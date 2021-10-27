@@ -182,6 +182,25 @@ document determines the value assigned to the alias.
 
 If an element is defined in the source but is blank (e.g., `<pubDate></pubDate>`), it is ignored, and non-empty one is picked.
 
+## Parsing Errors
+By default, there are no notification or exceptions on parsing errors and warnings. For Nokogiri and Ox, you can 
+specify a custom behavior by passing procs that receive a string:
+
+```ruby
+on_error = ->(error_string) { raise error_string }
+on_warning = ->(warning_string) { raise warning_string }
+
+feed = Atom.parse(xml, on_error, on_warning)
+```
+
+You can also use a global setting (e.g. in `config/initializers/saxophone.rb` when using Saxophone together
+with Ruby on Rails):
+
+```ruby
+Saxophone.on_error = ->(error_string) { raise error_string }
+Saxophone.on_warning = ->(warning_string) { raise warning_string }
+```
+
 ## Contributing
 
 1. Fork it
